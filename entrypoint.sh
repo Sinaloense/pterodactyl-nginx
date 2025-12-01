@@ -10,6 +10,9 @@ mkdir -p /home/container/logs
 # create tmp directory
 mkdir -p /home/container/tmp
 
+# create html directory
+mkdir -p /home/container/html
+
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
 echo ":/home/container$ ${PRINT_SAFE_STARTUP}"
 
