@@ -50,8 +50,8 @@ server {
     error_log /dev/stdout info;
     
 	# Print logs to file
-    access_log /home/container/logs/access.log;
-    error_log /home/container/logs/error.log;
+    access_log /home/container/nginx/logs/access.log;
+    error_log /home/container/nginx/logs/error.log;
 
 	# Disable gzip
 	gzip off;

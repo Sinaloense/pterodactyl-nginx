@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-12-01T00:11:42-07:00",
+    "exported_at": "2025-12-02T16:18:27-07:00",
     "name": "Nginx",
     "author": "sinaloensemel@gmail.com",
     "description": "a generic Nginx egg",
@@ -13,16 +13,16 @@
         "Cloudflared": "ghcr.io\/sinaloense\/pterodactyl-nginx:latest"
     },
     "file_denylist": [],
-    "startup": "nginx -c \/home\/container\/nginx.conf -p \/home\/container",
+    "startup": "nginx -c \/home\/container\/nginx\/nginx.conf -p \/home\/container\/nginx",
     "config": {
-        "files": "{\r\n    \"sites-enabled\/default\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"\\tlisten 80 default_server;\": \"\\tlisten {{server.build.default.port}} default_server;\",\r\n            \"\\tlisten [::]:80 default_server;\": \"\\tlisten [::]:{{server.build.default.port}} default_server;\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"nginx\/sites-enabled\/default\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"\\tlisten 80 default_server;\": \"\\tlisten {{server.build.default.port}} default_server;\",\r\n            \"\\tlisten [::]:80 default_server;\": \"\\tlisten [::]:{{server.build.default.port}} default_server;\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"start worker process\"\r\n}",
         "logs": "{}",
         "stop": "^C & ^C"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n# Cloudflared Installation Script\r\n#\r\napt-get update\r\napt-get install -y nginx\r\n\r\n# Copy nginx config\r\ncp -avr \/etc\/nginx\/* \/mnt\/server\/\r\nrm -rf \/mnt\/server\/sites-enabled\/\r\nmv \/mnt\/server\/sites-available\/ \/mnt\/server\/sites-enabled\/\r\n\r\n# Create logs directory\r\nmkdir -p \/mnt\/server\/logs\r\n\r\n# create tmp directory\r\nmkdir -p \/mnt\/server\/tmp\r\n\r\n# create html directory\r\nmkdir -p \/home\/container\/html",
+            "script": "#!\/bin\/bash\r\n# Cloudflared Installation Script\r\n#\r\napt-get update\r\napt-get install -y nginx\r\n\r\n# Copy nginx config\r\ncp -avr \/etc\/nginx\/ \/mnt\/server\/\r\nrm -rf \/mnt\/server\/nginx\/sites-enabled\/\r\nmv \/mnt\/server\/nginx\/sites-available\/ \/mnt\/server\/nginx\/sites-enabled\/\r\n\r\n# Create logs directory\r\nmkdir -p \/mnt\/server\/nginx\/logs\r\n\r\n# create tmp directory\r\nmkdir -p \/mnt\/server\/nginx\/tmp\r\n\r\n# create html directory\r\nmkdir -p \/home\/container\/html",
             "container": "debian@sha256:b4aa902587c2e61ce789849cb54c332b0400fe27b1ee33af4669e1f7e7c3e22f",
             "entrypoint": "bash"
         }

@@ -4,11 +4,11 @@ cd /home/container
 # Output Current Nginx Version
 nginx -v
 
-# Create logs directory
-mkdir -p /home/container/logs
+# Create Nginx logs directory
+mkdir -p /home/container/nginx/logs
 
-# create tmp directory
-mkdir -p /home/container/tmp
+# create Nginx tmp directory
+mkdir -p /home/container/nginx/tmp
 
 # create html directory
 mkdir -p /home/container/html
