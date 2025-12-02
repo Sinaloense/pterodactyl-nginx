@@ -1,0 +1,14 @@
+/var/lib/pterodactyl/volumes/*/nginx/logs/*.log {
+    daily
+    missingok
+    rotate 14
+    notifempty
+    sharedscripts
+    postrotate
+		CONTAINERS=$(docker ps --format "{{.ID}} {{.Image}}" | grep "ghcr.io/sinaloense/pterodactyl-nginx" | awk '{print $1}')
+
+        for cid in $CONTAINERS; do
+            docker exec $cid sh -c "nginx -s reopen -c /home/container/nginx/nginx.conf -p /home/container/nginx" 2>/dev/null || true
+        done
+    endscript
+}
