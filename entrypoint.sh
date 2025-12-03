@@ -14,7 +14,7 @@ mkdir -p /home/container/nginx/tmp
 mkdir -p /home/container/html
 
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
-echo ":/home/container$ ${PRINT_SAFE_STARTUP}"
+echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 ${MODIFIED_STARTUP}
