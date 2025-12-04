@@ -7,10 +7,10 @@ nginx -v
 # Create Nginx logs directory
 mkdir -p /home/container/nginx/logs
 
-# create Nginx tmp directory
+# Create Nginx tmp directory
 mkdir -p /home/container/nginx/tmp
 
-# create html directory
+# Create html directory
 mkdir -p /home/container/html
 
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
