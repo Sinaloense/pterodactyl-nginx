@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-12-05T17:04:06-07:00",
+    "exported_at": "2025-12-05T22:06:22-07:00",
     "name": "Nginx",
     "author": "sinaloensemel@gmail.com",
     "description": "Nginx egg",
@@ -13,7 +13,7 @@
         "Nginx": "ghcr.io\/sinaloense\/pterodactyl-nginx:latest"
     },
     "file_denylist": [],
-    "startup": "nginx -c \/home\/container\/nginx\/nginx.conf -p \/home\/container\/nginx",
+    "startup": "nginx -p \".\/nginx\" -c \"nginx.conf\"",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"start worker process\"\r\n}",
